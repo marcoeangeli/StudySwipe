@@ -1,21 +1,5 @@
 // ***** Get data from database
-var willGetAllUsers = new Promise(
-    function (resolve, reject) {
-        firebase.database().ref('/users').once('value').then(function(snapshot) {
-			let usersArray = [];
 
-			let allUsers = snapshot.val();
-
-			for (i in snapshot.val()) {
-				usersArray.push([i, allUsers[i].name, allUsers[i].courses, allUsers[i].hobbies, allUsers[i].enviroment]);
-			}
-
-			resolve(usersArray);
-
-
-		});
-    }
-);
 
 // Consider username/password
 var UserData = [
@@ -29,139 +13,6 @@ var UserData = [
 	[2, "221sf", ["123", "234", "321", "912"], ["Music"], "well lit room"], 
 ];
 
-var index = 0;
-
-var findPeople = new Promise (function (resolve, reject) {
-	willGetAllUsers.then(function (allUsers) {
-		this.allUsers= allUsers;
-		console.log(this.allUsers);
-	
-
-	let people = [];
-	let container = document.querySelector("#swipe");
-	// for (let i = 0; i < UserData.length; i ++) {
-	// 	// Adds everyone but the user to the list
-	// 	if (userId !== UserData[i][0]) {
-	// 		people.push(new Person(UserData[i][0], UserData[i][1], UserData[i][2], UserData[i][3], UserData[i][4]));	
-	// 		// people.push(new Person(UserData[i].name, UserData[i].))
-	// 	}
-	// }
-
-
-	for (let i = 0; i < this.allUsers.length; i ++) {
-		// Adds everyone but the user to the list
-		
-		// if (userId !== this.allUsers[i][0]) {
-			people.push(new Person(this.allUsers[i][0], this.allUsers[i][1], this.allUsers[i][2], this.allUsers[i][3], this.allUsers[i][4]));	
-			
-		// }
-	}
-
-	// ***** Get info from id
-	similarity(["Music"], ["123", "234", "912"]);
-	
-	container.appendChild(people[0].element);
-	console.log(people);
-	resolve(people);
-	// return people;
-	});
-}) 
-
-// async function findPeople(userId) {
-// 	await willGetAllUsers.then(function (allUsers) {
-// 		this.allUsers= allUsers;
-// 		console.log(this.allUsers);
-// 	});
-
-// 	let people = [];
-// 	let container = document.querySelector("#swipe");
-// 	// for (let i = 0; i < UserData.length; i ++) {
-// 	// 	// Adds everyone but the user to the list
-// 	// 	if (userId !== UserData[i][0]) {
-// 	// 		people.push(new Person(UserData[i][0], UserData[i][1], UserData[i][2], UserData[i][3], UserData[i][4]));	
-// 	// 		// people.push(new Person(UserData[i].name, UserData[i].))
-// 	// 	}
-// 	// }
-
-
-// 	for (let i = 0; i < this.allUsers.length; i ++) {
-// 		// Adds everyone but the user to the list
-// 		if (userId !== this.allUsers[i][0]) {
-// 			people.push(new Person(this.allUsers[i][0], this.allUsers[i][1], this.allUsers[i][2], this.allUsers[i][3], this.allUsers[i][4]));	
-			
-// 		}
-// 	}
-
-// 	// ***** Get info from id
-// 	similarity(["Music"], ["123", "234", "912"]);
-	
-// 	container.appendChild(people[0].element);
-// 	console.log(people);
-// 	return people;
-// }
-
-function similarity (userHobbies, userCourses) {
-	let temp = [];
-	for (let i = 0; i < this.allUsers.length; i ++) {
-		let count = 0; //finds number matches
-		let randHobbies = this.allUsers[i][3]; //user from databases hobbies
-		let randCourses = this.allUsers[i][2];
-		randHobbies.sort(); // alphabeticize can also do it numeric
-		randCourses.sort();
-		//*****add ignore case
-		let j = 0;
-		let k = 0;
-		while (j < randHobbies.length && k < userHobbies.length) {
-			if (randHobbies[j] === userHobbies[k]) {
-				count +=1;
-				j ++;
-				k ++;
-			} else if (randHobbies[j] > userHobbies[k]) {
-				k ++;
-			} else {
-				j ++;
-			}
-		}
-		// Finds matches
-		j = 0;
-		k = 0;
-		while (j < randCourses.length && k < userCourses.length) {
-			if (randCourses[j] === userCourses[k]) {
-				count +=1;
-				j ++;
-				k ++;
-			} else if (randCourses[j] > userCourses[k]) {
-				k ++;
-			} else {
-				j ++;
-			}
-		}
-		temp.push(count); // adds sorted hobbies with number matches to temp array
-
-	}
-	console.log(temp);
-	// Reorders
-	for (let i = 0; i < temp.length-1; i ++) {
-
-		for (let j = i+1; j < temp.length; j ++) {
-
-			if (temp[i] < temp[j]) {
-				let placeHolder = temp[i];
-				temp[i] = temp[j];
-				temp[j] = placeHolder;
-				placeHolder = this.allUsers[i];
-				allUsers[i] = this.allUsers[j];
-				allUsers[j] = placeHolder;
-			}
-
-		}
-		
-		
-	}
-	console.log(temp);
-	console.log(UserData);
-
-}
 
 
 let origin = [null,null]; //represents original position
@@ -207,15 +58,15 @@ function dragEnd(event) {
 		}
 
 		// Changes person
-		if (index > app.people.length-1) {
+		if (index > people.length-1) {
 			let container = document.querySelector("#swipe");
 			container.innerHTML = "<h1>No more potential buddies! Please check again later :)</h1>";
 			//**** Reload from database, reset index
 		} else {
 			let container = document.querySelector("#swipe");
 			container.innerHTML = "";
-			console.log(app.people[0].element);
-			container.appendChild(app.people.element);	
+			console.log(people[0].element);
+			container.appendChild(people[index].element);	
 		}
 		
 	} else {				

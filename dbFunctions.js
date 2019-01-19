@@ -2,8 +2,7 @@
     /**
      * Handles the sign in button press.
      */
-    var app;
-
+    
     async function handleSignIn() {
       let email = document.getElementById('sign-in-email').value;
       let password = document.getElementById('sign-in-password').value;

@@ -8,7 +8,8 @@ class Person {
 		this.environment = environment;
 
 		this.element = this.createPersonDOM(moniker, courses, hobbies, environment);
-	}
+		console.log(this);
+	}	
 
 	// For the HTML element
 	createPersonDOM (moniker, courses, hobbies, environment) {
