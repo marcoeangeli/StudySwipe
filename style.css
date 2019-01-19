@@ -20,18 +20,23 @@ body {
 	justify-content: center;
 	position: fixed;
 	bottom: 0px;
-	height: 17%;
+	height: 15%;
 	background-color: rgb(12,130,120);
 }
 
+#swipe {
+	touch-action: none;
+	width: 100%;
+}
 
 #profileName {
   background-image: linear-gradient(to right, #c4fffc, #fff7a8);
-  height: 10%;
+  background-size: cover;
   font-family: monospace;
   font-size: 3em;
   text-align: center;
   width: 100%;
+  height: 15%;
 }
 
 .swipeClasses {
@@ -47,6 +52,7 @@ body {
   width: 75%;
   margin-top: 10px;
   margin-bottom: 10px;
+  padding: 20px;
 }
 
 
