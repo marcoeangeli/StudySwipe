@@ -1,7 +1,7 @@
 class App {
 	constructor (userId) {
-		this.useId = userId;
-		this.people = findPeople();
+		this.userId = userId;
+		this.people = findPeople(userId);
 		this.swipe = new SwipeScreen(document.querySelector("#swipe"), this.people);
 		this.message = new MessageScreen(document.querySelector("#message"));
 		this.setting = new SettingScreen(document.querySelector("#setting"));
@@ -18,6 +18,8 @@ class App {
 		this.messageButt.addEventListener("click", this.clickMess);
 		this.settingButt.addEventListener("click", this.clickSet);
 
+		document.querySelector("#banner").classList.remove("inactive");
+		document.querySelector("#swipe").classList.remove("inactive");
 		document.querySelector("#signUp").classList.add("inactive");
 
 	}

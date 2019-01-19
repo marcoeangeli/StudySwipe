@@ -2,6 +2,7 @@
     /**
      * Handles the sign in button press.
      */
+    var app;
 
     async function handleSignIn() {
       let email = document.getElementById('sign-in-email').value;
@@ -23,8 +24,6 @@
         let userId = firebase.auth().currentUser.uid;
         let app = new App(userId);  
       }
-
-      
     }
 
 

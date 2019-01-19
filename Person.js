@@ -14,7 +14,7 @@ class Person {
 	createPersonDOM (moniker, courses, hobbies, environment) {
 		let personContainer = document.createElement("div");
 		
-		let nameContainer = document.createElement("header");
+		let nameContainer = document.createElement("div");
 		nameContainer.id = "profileName";
 		nameContainer.textContent = moniker;
 		
@@ -34,7 +34,6 @@ class Person {
 		personContainer.appendChild(classesContainer);
 		personContainer.appendChild(hobbiesContainer);
 		personContainer.appendChild(environmentContainer);
-		personContainer.style.touchAction ="none";
 		personContainer.addEventListener('pointerdown', dragStart);
     	personContainer.addEventListener('pointermove', dragMove);
     	personContainer.addEventListener('pointerup', dragEnd);
