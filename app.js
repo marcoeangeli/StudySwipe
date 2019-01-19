@@ -47,6 +47,13 @@ class App {
 		if (!this.setting.classList.contains("inactive")) {
 			this.setting.classList.add("inactive");
 		}
+
+
+		var i;
+		for (i = 0; i < 5; i++) { 
+  			var container = document.createElement('div');
+    		container.innerHTML = '<input type="button">Click Me!</input>';
+		}
 	}
 	clickSet(event) {
 		if (!this.swipe.classList.contains("inactive")) {
