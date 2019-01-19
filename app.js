@@ -1,7 +1,10 @@
 class App {
 	constructor (userId) {
 		this.userId = userId;
-		this.people = findPeople(userId);
+		findPeople.then(function(snapshot) {
+			this.people = snapshot;
+		});
+			// (userId);
 		this.swipe = new SwipeScreen(document.querySelector("#swipe"), this.people);
 		this.message = new MessageScreen(document.querySelector("#message"));
 		this.setting = new SettingScreen(document.querySelector("#setting"));

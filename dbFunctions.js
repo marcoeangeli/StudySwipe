@@ -22,7 +22,7 @@
       
       if (success) {
         let userId = firebase.auth().currentUser.uid;
-        let app = new App(userId);  
+        app = new App(userId);  
       }
     }
 
@@ -80,7 +80,7 @@
 
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('users/' + userId).set({name: name, courses: [course1, course2, course3, course4, course5], hobbies: [hobby1, hobby2, hobby3], enviroment: enviroment});
-      let app = new App(userId);
+      app = new App(userId);
     }
     
     /**

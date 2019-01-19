@@ -31,36 +31,81 @@ var UserData = [
 
 var index = 0;
 
-async function findPeople(userId) {
+var findPeople = new Promise (function (resolve, reject) {
 	willGetAllUsers.then(function (allUsers) {
-
-		console.log(allUsers);
-	});
+		this.allUsers= allUsers;
+		console.log(this.allUsers);
+	
 
 	let people = [];
 	let container = document.querySelector("#swipe");
-	for (let i = 0; i < UserData.length; i ++) {
+	// for (let i = 0; i < UserData.length; i ++) {
+	// 	// Adds everyone but the user to the list
+	// 	if (userId !== UserData[i][0]) {
+	// 		people.push(new Person(UserData[i][0], UserData[i][1], UserData[i][2], UserData[i][3], UserData[i][4]));	
+	// 		// people.push(new Person(UserData[i].name, UserData[i].))
+	// 	}
+	// }
+
+
+	for (let i = 0; i < this.allUsers.length; i ++) {
 		// Adds everyone but the user to the list
-		if (userId !== UserData[i][0]) {
-			people.push(new Person(UserData[i][0], UserData[i][1], UserData[i][2], UserData[i][3], UserData[i][4]));	
-			// people.push(new Person(UserData[i].name, UserData[i].))
-		}
+		
+		// if (userId !== this.allUsers[i][0]) {
+			people.push(new Person(this.allUsers[i][0], this.allUsers[i][1], this.allUsers[i][2], this.allUsers[i][3], this.allUsers[i][4]));	
+			
+		// }
 	}
 
+	// ***** Get info from id
 	similarity(["Music"], ["123", "234", "912"]);
 	
 	container.appendChild(people[0].element);
+	console.log(people);
+	resolve(people);
+	// return people;
+	});
+}) 
 
-	return people;
-}
+// async function findPeople(userId) {
+// 	await willGetAllUsers.then(function (allUsers) {
+// 		this.allUsers= allUsers;
+// 		console.log(this.allUsers);
+// 	});
+
+// 	let people = [];
+// 	let container = document.querySelector("#swipe");
+// 	// for (let i = 0; i < UserData.length; i ++) {
+// 	// 	// Adds everyone but the user to the list
+// 	// 	if (userId !== UserData[i][0]) {
+// 	// 		people.push(new Person(UserData[i][0], UserData[i][1], UserData[i][2], UserData[i][3], UserData[i][4]));	
+// 	// 		// people.push(new Person(UserData[i].name, UserData[i].))
+// 	// 	}
+// 	// }
+
+
+// 	for (let i = 0; i < this.allUsers.length; i ++) {
+// 		// Adds everyone but the user to the list
+// 		if (userId !== this.allUsers[i][0]) {
+// 			people.push(new Person(this.allUsers[i][0], this.allUsers[i][1], this.allUsers[i][2], this.allUsers[i][3], this.allUsers[i][4]));	
+			
+// 		}
+// 	}
+
+// 	// ***** Get info from id
+// 	similarity(["Music"], ["123", "234", "912"]);
+	
+// 	container.appendChild(people[0].element);
+// 	console.log(people);
+// 	return people;
+// }
 
 function similarity (userHobbies, userCourses) {
 	let temp = [];
-	for (let i = 0; i < UserData.length; i ++) {
+	for (let i = 0; i < this.allUsers.length; i ++) {
 		let count = 0; //finds number matches
-		let randHobbies = UserData[i][3]; //user from databases hobbies
-		//*****add rand course var
-		let randCourses = UserData[i][2];
+		let randHobbies = this.allUsers[i][3]; //user from databases hobbies
+		let randCourses = this.allUsers[i][2];
 		randHobbies.sort(); // alphabeticize can also do it numeric
 		randCourses.sort();
 		//*****add ignore case
@@ -104,9 +149,9 @@ function similarity (userHobbies, userCourses) {
 				let placeHolder = temp[i];
 				temp[i] = temp[j];
 				temp[j] = placeHolder;
-				placeHolder = UserData[i];
-				UserData[i] = UserData[j];
-				UserData[j] = placeHolder;
+				placeHolder = this.allUsers[i];
+				allUsers[i] = this.allUsers[j];
+				allUsers[j] = placeHolder;
 			}
 
 		}
@@ -169,7 +214,8 @@ function dragEnd(event) {
 		} else {
 			let container = document.querySelector("#swipe");
 			container.innerHTML = "";
-			container.appendChild(app.people[index].element);	
+			console.log(app.people[0].element);
+			container.appendChild(app.people.element);	
 		}
 		
 	} else {				
