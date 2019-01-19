@@ -15,6 +15,7 @@ class Person {
 		let personContainer = document.createElement("div");
 		personContainer.classList.add("pretty");
 		personContainer.style.backgroundColor = "#d0e6df";
+		personContainer.style.touchAction ="none";
 		personContainer.style.height = "200px";
 		personContainer.style.width = "200px";
 		personContainer.innerHTML = "Name: " + moniker + "<br>Courses: " + courses + "<br> Hobbies: " + hobbies + "<br>Environment: " + environment;

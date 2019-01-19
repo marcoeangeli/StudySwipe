@@ -2,10 +2,11 @@
 <html>
   <head>
   	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Study Tinder</title>
     <script src="script.js" defer></script>
+    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
     <script src="SettingScreen.js" defer></script>
     <script src="MessageScreen.js" defer></script>
     <script src="SwipeScreen.js" defer></script>
@@ -14,7 +15,7 @@
     <script src="main.js" defer></script>
   </head>
 	<body>
-		<div id = "swipe">
+		<div id = "swipe" touch-action:none>
 		</div>
 		<div id = "message" class = "inactive">
 		</div>

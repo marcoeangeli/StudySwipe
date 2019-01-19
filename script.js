@@ -33,6 +33,7 @@ let dragging = false;
 
 // Drags
 function dragStart(event) {
+  
   origin[0] = event.clientX; // initial positions, ensures it will reset with movement
   origin[1] = event.clientY;
   console.log("X "+origin[0]);
@@ -46,7 +47,6 @@ function dragMove(event) {
   if (!dragging) {
     return;
   }
-  event.preventDefault();
   translate[0] = change[0] + event.clientX - origin[0]; // How much to move
   translate[1] = change[1] + event.clientY - origin[1]; // How much to move
   event.currentTarget.style.transform = 'translate(' +  translate[0] + 'px,' +  translate[1] + 'px) ' ; // translates
