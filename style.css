@@ -1,6 +1,7 @@
 body {
 	display: flex;
 	justify-content: center;
+	margin: 10px;
 }
 
 .inactive {
@@ -17,17 +18,16 @@ body {
 	background-size: cover;
 	width: 100%;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	position: fixed;
 	bottom: 0px;
 	height: 15%;
-	background-color: rgb(12,130,120);
+	background-image: linear-gradient(to right, #c4fffc, #fff7a8);
 }
 
 #swipe {
 	touch-action: none;
 	width: 100%;
-	margin: 10px;
 	background-size: cover;
 	background-position: center;
 }

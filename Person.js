@@ -18,6 +18,7 @@ class Person {
 		let nameContainer = document.createElement("div");
 		nameContainer.id = "profileName";
 		nameContainer.textContent = moniker;
+		nameContainer.style.marginBottom = "7%";
 		
 		let classesContainer = document.createElement("div");
 		classesContainer.classList.add("swipeClasses");
