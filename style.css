@@ -27,6 +27,9 @@ body {
 #swipe {
 	touch-action: none;
 	width: 100%;
+	margin: 10px;
+	background-size: cover;
+	background-position: center;
 }
 
 #profileName {
@@ -57,9 +60,17 @@ body {
   padding: 20px;
 }
 
-
 @media (max-height: 400px){
 	#banner {
 		height: 60px;
+	}
+}
+
+@media (max-width: 350px) {
+	#profileName {
+		font-size: : 2em;
+	}
+	.swipeClasses {
+		font-size: 1.5em;
 	}
 }

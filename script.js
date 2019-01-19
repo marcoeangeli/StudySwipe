@@ -1,20 +1,3 @@
-// ***** Get data from database
-
-
-// Consider username/password
-var UserData = [
-	[0, "Jane Doe", ["123", "234", "345", "456", "567"], ["Sports"], "quiet cafe"],
-	[1, "Morino Aslan", ["234", "345", "456", "567", "912"], ["Music", "Sports"], "library"],
-	[2, "Anna Dragon", ["123", "234", "345", "456", "567"], ["Music", "Reading", "Iron-Man"], "well lit room"],
-	[2, "Fireheart", ["123", "234", "345", "567"], ["Music", "Reading", "Iron-Man"], "well lit room"],
-	[2, "Zelna", ["123", "234", "102", "456", "321"], ["Bikes"], "well lit room"],
-	[2, "hungry", ["123", "234", "321", "912"], ["Music"], "well lit room"], 
-	[2, "asda", ["123", "234", "321", "912"], ["Music"], "well lit room"], 
-	[2, "221sf", ["123", "234", "321", "912"], ["Music"], "well lit room"], 
-];
-
-
-
 let origin = [null,null]; //represents original position
 let change = [0,0]; //represents the new position
 let translate = [0,0];
@@ -42,6 +25,10 @@ function dragMove(event) {
   event.currentTarget.style.transform = 'translate(' +  translate[0] + 'px,' +  translate[1] + 'px) ' ; // translates
   let rotateAngle = 0.2*(event.clientX - origin[0]);
   event.currentTarget.style.transform += 'rotate(' + rotateAngle + 'deg)'; //rotates 
+  if (event.clientX - origin[0] > 150||event.clientX - origin[0] < -150){
+  	document.querySelector("#swipe").style.backgroundImage = "url('StudySwipeLogo.png')";
+  } 
+  
   
 }
 
@@ -52,6 +39,8 @@ function dragEnd(event) {
 		// swipe right
 		if (event.clientX - origin[0] > 150){
 			// ***** Change database to mark a match
+			// CHeck if thet like you
+			// If yes open conversation
 		// Swipe left
 		} else if (event.clientX - origin[0] < -150) {
 		  	// ***** Change database to mark a match
@@ -61,17 +50,18 @@ function dragEnd(event) {
 		if (index > people.length-1) {
 			let container = document.querySelector("#swipe");
 			container.innerHTML = "<h1>No more potential buddies! Please check again later :)</h1>";
+			container.style.alignText = "center";
+			document.querySelector("#swipe").style.backgroundImage = "unset";
 			//**** Reload from database, reset index
 		} else {
-			let container = document.querySelector("#swipe");
-			container.innerHTML = "";
-			console.log(people[0].element);
-			container.appendChild(people[index].element);	
+			event.target.style.transform = '';
+			switchSwipe();	
 		}
 		
 	} else {				
   	  event.target.style.transform = '';
     }
+	  document.querySelector("#swipe").style.backgroundImage = "unset";
   
 }
 
@@ -82,4 +72,3 @@ function show (element) {
 function hide (element) {
 	element.classList.add("inactive");
 }
-
