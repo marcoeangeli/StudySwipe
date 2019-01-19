@@ -18,7 +18,7 @@ class App {
 		this.messageButt.addEventListener("click", this.clickMess);
 		this.settingButt.addEventListener("click", this.clickSet);
 
-		// document.querySelector("#signupScreen").classList.add("inactive");
+		document.querySelector("#signUp").classList.add("inactive");
 
 	}
 

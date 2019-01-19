@@ -1,2 +1,1 @@
-let app = new App();
-
+let collectInfo = new CollectInfo();
