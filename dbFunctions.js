@@ -7,17 +7,24 @@
       let email = document.getElementById('sign-in-email').value;
       let password = document.getElementById('sign-in-password').value;
 
+      let success = true;
+
       await firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
+        success = false;
         
         alert(errorMessage);
         console.log(error);
         // [END_EXCLUDE]
       });
+      
+      if (success) {
+        let userId = firebase.auth().currentUser.uid;
+        let app = new App(userId);  
+      }
 
-      let userId = firebase.auth().currentUser.uid;
-      let app = new App(userId);
+      
     }
 
 
@@ -51,6 +58,9 @@
         alert('Please enter a password.');
         return;
       }
+
+      let success = true;
+
       // Sign in with email and pass.
       // [START createwithemail]
       await firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
@@ -68,8 +78,9 @@
       });
       // [END createwithemail]
     
+
       var userId = firebase.auth().currentUser.uid;
-      firebase.database().ref('users/' + userId).set({name: name, courses: {course1, course2, course3, course4, course5}, hobbies: [hobby1, hobby2, hobby3], enviroment: enviroment});
+      firebase.database().ref('users/' + userId).set({name: name, courses: [course1, course2, course3, course4, course5], hobbies: [hobby1, hobby2, hobby3], enviroment: enviroment});
       let app = new App(userId);
     }
     

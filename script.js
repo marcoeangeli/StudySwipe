@@ -1,4 +1,21 @@
 // ***** Get data from database
+var willGetAllUsers = new Promise(
+    function (resolve, reject) {
+        firebase.database().ref('/users').once('value').then(function(snapshot) {
+			let usersArray = [];
+
+			let allUsers = snapshot.val();
+
+			for (i in snapshot.val()) {
+				usersArray.push([i, allUsers[i].name, allUsers[i].courses, allUsers[i].hobbies, allUsers[i].environment]);
+			}
+
+			resolve(usersArray);
+
+
+		});
+    }
+);
 
 // Consider username/password
 var UserData = [
@@ -9,7 +26,11 @@ var UserData = [
 
 var index = 0;
 
-function findPeople() {
+async function findPeople() {
+	willGetAllUsers.then(function (allUsers) {
+
+		console.log(allUsers);
+	});
 	let users = [];
 	let container = document.querySelector("#swipe");
 	for (let i = 0; i < UserData.length; i ++) {
