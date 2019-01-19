@@ -1,0 +1,5 @@
+class SettingScreen {
+	constructor (container) {
+	
+	}
+}

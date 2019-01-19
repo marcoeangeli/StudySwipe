@@ -1,0 +1,9 @@
+.inactive {
+	display: none !important; 
+}
+
+#banner {
+	display: flex;
+	position: absolute;
+	
+}

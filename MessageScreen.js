@@ -1,0 +1,5 @@
+class MessageScreen {
+	constructor (container) {
+	
+	}
+}
