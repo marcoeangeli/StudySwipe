@@ -1,7 +1,8 @@
 var people = [];
 
 
-var index = 0;
+var index = 2;
+
 var willGetAllUsers = new Promise(
     function (resolve, reject) {
         firebase.database().ref('/users').once('value').then(function(snapshot) {
@@ -23,10 +24,7 @@ function findPeople () {
 	let allUsers = [];
 	willGetAllUsers.then(function (all) {
 		allUsers = all;
-		console.log(allUsers);
 	
-	
-	let container = document.querySelector("#swipe");
 	this.allUsers = similarity(["Music"], ["123", "234", "912"], allUsers);
 	for (let i = 0; i < this.allUsers.length; i ++) {
 		// Adds everyone but the user to the list
@@ -37,16 +35,18 @@ function findPeople () {
 	}
 
 	// ***** Get info from id
-	console.log(people);
-	
-
-	// allUsers = similarity(["Music"], ["123", "234", "912"], people);
+	let container = document.querySelector("#swipe");
 	container.appendChild(people[0].element);
-	
-	// resolve(people);
 	
 	});
 
+}
+
+function switchSwipe () {
+	let container = document.querySelector("#swipe");
+	container.innerHTML="";
+	container.appendChild(people[index].element);
+	
 }
 
 function similarity (userHobbies, userCourses, allUsers) {
@@ -88,7 +88,7 @@ function similarity (userHobbies, userCourses, allUsers) {
 		temp.push(count); // adds sorted hobbies with number matches to temp array
 
 	}
-	console.log(temp);
+	// console.log(temp);
 	// Reorders
 	for (let i = 0; i < temp.length-1; i ++) {
 
@@ -107,8 +107,8 @@ function similarity (userHobbies, userCourses, allUsers) {
 		
 		
 	}
-	console.log(temp);
-	console.log(allUsers);
+	// console.log(temp);
+	// console.log(allUsers);
 	return allUsers;
 
 }
