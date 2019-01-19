@@ -18,9 +18,13 @@ class App {
 		this.messageButt.addEventListener("click", this.clickMess);
 		this.settingButt.addEventListener("click", this.clickSet);
 
+		this.sortPeople = this.sortPeople.bind(this);
+
 		document.querySelector("#banner").classList.remove("inactive");
 		document.querySelector("#swipe").classList.remove("inactive");
 		document.querySelector("#signUp").classList.add("inactive");
+
+		people = this.sortPeople(this.userId);
 
 	}
 
@@ -66,5 +70,77 @@ class App {
 			}
 		}
 	}
+
+	sortPeople (peopleMap) {
+
+		let tempPeople = [];
+		let tempNum = [];
+
+		// FInds all courses, changes map into array
+		for (person in peopleMap) {
+			tempPeople.push([person.idNum, person.moniker, person.courses, person.hobbies, person.enviroment, person.element])
+		}
+
+		// For every person in the base
+		for (let i = 0; i < peopleMap.size(); i ++) {
+
+			let count = 0; //finds number matches
+			let randHobbies = tempPeople[i][3]; // finds and sorts hobbies/courses
+			let randCourses = tempPeople[i][2];
+			randHobbies.sort(); // alphabeticize can also do it numeric
+			randCourses.sort();
+			
+			let j = 0;
+			let k = 0;
+			// Finds matches hobbies
+			while (j < randHobbies.length && k < this.user[3].length) {
+				if (randHobbies[j] === userHobbies[k]) {
+					count +=1;
+					j ++;
+					k ++;
+				} else if (randHobbies[j] > userHobbies[k]) {
+					k ++;
+				} else {
+					j ++;
+				}
+			}
+			// Finds matches courses
+			j = 0;
+			k = 0;
+			while (j < randCourses.length && k < this.user[2].length) {
+				if (randCourses[j] === userCourses[k]) {
+					count +=1;
+					j ++;
+					k ++;
+				} else if (randCourses[j] > userCourses[k]) {
+					k ++;
+				} else {
+					j ++;
+				}
+			}
+			tempNum.push(count); // adds sorted hobbies with number matches to temp array
+		}
+		console.log(tempNum);
+
+		// Reorders
+		for (let i = 0; i < temp.length-1; i ++) {
+
+			for (let j = i+1; j < temp.length; j ++) {
+
+				if (temp[i] < temp[j]) {
+					let placeHolder = temp[i];
+					temp[i] = temp[j];
+					temp[j] = placeHolder;
+					placeHolder = tempPeople[i];
+					tempPeople[i] = tempPeople[j];
+					tempPeople[j] = placeHolder;
+				}
+
+			}
+		}
+		console.log(tempNum);
+
+	}
+
 
 }
