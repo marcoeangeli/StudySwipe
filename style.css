@@ -13,3 +13,28 @@ body {
 	display: flex;
 	justify-content: center;
 }
+
+#profileName {
+  background-image: linear-gradient(to right, #c4fffc, #fff7a8);
+  height: 10%;
+  font-family: monospace;
+  font-size: 3em;
+  text-align: center;
+  width: 100%;
+}
+
+.swipeClasses {
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #bcffd4;
+  text-align: center;
+  font-family: monospace;
+  font-size: 2em;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  width: 75%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
