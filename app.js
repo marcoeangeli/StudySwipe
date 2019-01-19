@@ -1,6 +1,6 @@
 class App {
-	constructor (user) {
-		this.user = user;
+	constructor (userId) {
+		this.useId = userId;
 		this.people = findPeople();
 		const swipe = new SwipeScreen(document.querySelector("#swipe"), this.people);
 		const message = new MessageScreen(document.querySelector("#message"));
