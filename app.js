@@ -1,8 +1,7 @@
 class App {
 	constructor (userId) {
 		this.userId = userId;
-		// this.people = findPeople(userId);
-		// console.log(this.people);
+		this.user = this.findUser(userId);
 		this.swipe = new SwipeScreen(document.querySelector("#swipe"), this.people);
 		this.message = new MessageScreen(document.querySelector("#message"));
 		this.setting = new SettingScreen(document.querySelector("#setting"));
@@ -57,6 +56,14 @@ class App {
 		}
 		if (this.setting.classList.contains("inactive")) {
 			this.setting.classList.remove("inactive");	
+		}
+	}
+
+	findUser(userId) {
+		for(let i = 0; i <people.length; i ++) {
+			if (userId === people[i]) {
+				return people.splice(i, 1);
+			}
 		}
 	}
 
