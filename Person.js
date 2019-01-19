@@ -34,18 +34,12 @@ class Person {
 		personContainer.appendChild(classesContainer);
 		personContainer.appendChild(hobbiesContainer);
 		personContainer.appendChild(environmentContainer);
-		// personContainer.innerHTML = personContainer.innerHTML + "Environment: " + environment;
-
-		// personContainer.style.backgroundColor = "#d0e6df";
 		personContainer.style.touchAction ="none";
-		// personContainer.style.height = "200px";
-		// personContainer.style.width = "200px";
-		// personContainer.innerHTML = "Name: " + moniker + "<br>Courses: " + courses + "<br> Hobbies: " + hobbies + "<br>Environment: " + environment;
 		personContainer.addEventListener('pointerdown', dragStart);
     	personContainer.addEventListener('pointermove', dragMove);
     	personContainer.addEventListener('pointerup', dragEnd);
     	return personContainer;
 	}
 
-	
+
  }
