@@ -1,19 +1,29 @@
-.inactive {
-	display: none !important; 
-}
-
-#banner {
-	background-size: cover;
-	display: flex;
-	position: fixed;
-	bottom: 0px;
-	height: 10%;
-}
-
 body {
 	display: flex;
 	justify-content: center;
 }
+
+.inactive {
+	display: none !important; 
+}
+
+.menu {
+	background-color: unset;
+	border: unset;
+	font-size: 1.5em;
+}
+
+#banner {
+	background-size: cover;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	position: fixed;
+	bottom: 0px;
+	height: 17%;
+	background-color: rgb(12,130,120);
+}
+
 
 #profileName {
   background-image: linear-gradient(to right, #c4fffc, #fff7a8);
@@ -42,6 +52,6 @@ body {
 
 @media (max-height: 400px){
 	#banner {
-		height: 45px;
+		height: 60px;
 	}
 }
