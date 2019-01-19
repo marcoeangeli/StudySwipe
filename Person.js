@@ -8,7 +8,6 @@ class Person {
 		this.environment = environment;
 
 		this.element = this.createPersonDOM(moniker, courses, hobbies, environment);
-		console.log(this);
 	}	
 
 	// For the HTML element
@@ -18,6 +17,7 @@ class Person {
 		let nameContainer = document.createElement("div");
 		nameContainer.id = "profileName";
 		nameContainer.textContent = moniker;
+		nameContainer.style.marginBottom = "7%";
 		
 		let classesContainer = document.createElement("div");
 		classesContainer.classList.add("swipeClasses");
