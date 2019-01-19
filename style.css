@@ -3,10 +3,11 @@
 }
 
 #banner {
+	background-size: cover;
 	display: flex;
 	position: fixed;
 	bottom: 0px;
-
+	height: 10%;
 }
 
 body {
@@ -38,3 +39,9 @@ body {
   margin-bottom: 10px;
 }
 
+
+@media (max-height: 400px){
+	#banner {
+		height: 45px;
+	}
+}
