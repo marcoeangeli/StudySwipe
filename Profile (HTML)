@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="PersonProfile.css">
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+  </head>
+  
+  <body>
+
+    <header> Name </header>
+    
+    <div>
+      <div id = "classes"> Hello World!</div>
+      <div id = "interests"> Hello World!</div>
+    </div>
+
+  </body>
+</html>

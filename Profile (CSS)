@@ -1,34 +1,32 @@
-.inactive {
-	display: none !important; 
-}
-
-#banner {
-	background-size: cover;
-	display: flex;
-	position: fixed;
-	bottom: 0px;
-	height: 10%;
-}
-
 body {
-	display: flex;
-	justify-content: center;
+  margin: 0;
+  background: white;
+
 }
 
-#profileName {
+
+header {
   background-image: linear-gradient(to right, #c4fffc, #fff7a8);
-  height: 10%;
+  height: 200px;
   font-family: monospace;
   font-size: 3em;
   text-align: center;
   width: 100%;
 }
 
-.swipeClasses {
+div {
   background-color: white;
+  align-items: center;
+  align-content: center;
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
+}
+
+
+#classes {
   background-color: #bcffd4;
+  /*height: 250px;*/
   text-align: center;
   font-family: monospace;
   font-size: 2em;
@@ -39,9 +37,13 @@ body {
   margin-bottom: 10px;
 }
 
-
-@media (max-height: 400px){
-	#banner {
-		height: 45px;
-	}
+#interests {
+ background-color: #bcffd4;
+  /*height: 250px;*/
+  text-align: center;
+  font-family: monospace;
+  font-size: 2em;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  width: 75%;
 }

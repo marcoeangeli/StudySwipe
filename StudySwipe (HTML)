@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<link rel="stylesheet" type="text/css" href="StudyTinderCss.css">
+  	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Study Swipe</title>
+    <script src="app.js" defer></script>
+  </head>
+	<body>
+		<h1> Study Swipe! </h1>
+		<h2> We'll find you a new study buddy! </h1>
+
+
+		<div id = "buttons">
+			<a href= "" id = "sign_up">Sign Up</a> 
+			<a href= "" id = "log_in">Log In</a>
+			
+		</div>
+		
+		
+	</body>
+
+
+</html>

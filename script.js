@@ -16,9 +16,13 @@ function findPeople() {
 		users.push(new Person(UserData[i][0], UserData[i][1], UserData[i][2], UserData[i][3], UserData[i][4]));
 	}
 
+	//******
+	// Find current user
+	// Remove from users
 	// Sort by hobbies
 	// Sort by classes
-
+	//******
+	
 	container.appendChild(users[0].element);
 
 	console.log(users);
