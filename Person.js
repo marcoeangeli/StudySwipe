@@ -22,6 +22,7 @@ class Person {
 		let classesContainer = document.createElement("div");
 		classesContainer.classList.add("swipeClasses");
 		classesContainer.textContent = "Courses:";
+		console.log(courses);
 		if (courses.length < 2) {
 			classesContainer.textContent +=  courses;	
 		} else {

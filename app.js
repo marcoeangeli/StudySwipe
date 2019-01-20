@@ -2,7 +2,7 @@ class App {
 	constructor (userId) {
 		this.userId = userId;
 		this.user = this.findUser(userId);
-		this.swipe = new SwipeScreen(document.querySelector("#swipe"), people);
+		this.swipe = new SwipeScreen(document.querySelector("#swipe"));
 		this.message = new MessageScreen(document.querySelector("#message"));
 		this.setting = new SettingScreen(document.querySelector("#setting"));
 		
@@ -24,7 +24,7 @@ class App {
 		document.querySelector("#swipe").classList.remove("inactive");
 		document.querySelector("#signUp").classList.add("inactive");
 
-		people = this.sortPeople(this.userId);
+		people = this.sortPeople();
 
 	}
 
@@ -72,41 +72,40 @@ class App {
 
 	findUser(userId) {
 		for(let i = 0; i <people.length; i ++) {
-			if (userId === people[i]) {
-				return people.splice(i, 1);
+			if (userId === people[i].idNum) {
+				return people.splice(i, 1)[0];
 			}
 		}
 	}
 
-	sortPeople (peopleMap) {
+	sortPeople () {
 
 		let tempPeople = [];
 		let tempNum = [];
 
 		// FInds all courses, changes map into array
-		for (let person in peopleMap) {
-			console.log(person);
-			tempPeople.push([person.idNum, person.moniker, person.courses, person.hobbies, person.enviroment, person.element])
-		}
+		for (let person in people) {
+			console.log(people[person]);
 
 		// For every person in the base
-		for (let i = 0; i < peopleMap.size; i ++) {
+		// for (let i = 0; i < people.length; i ++) {
 
 			let count = 0; //finds number matches
-			let randHobbies = tempPeople[i][3]; // finds and sorts hobbies/courses
-			let randCourses = tempPeople[i][2];
+			let randHobbies = people[person].hobbies; // finds and sorts hobbies/courses
+			let randCourses = people[person].courses;
 			randHobbies.sort(); // alphabeticize can also do it numeric
 			randCourses.sort();
+			this.user.hobbies.sort();
 			
 			let j = 0;
 			let k = 0;
 			// Finds matches hobbies
-			while (j < randHobbies.length && k < this.user[3].length) {
-				if (randHobbies[j] === userHobbies[k]) {
+			while (j < randHobbies.length && k < this.user.hobbies.length) {
+				if (randHobbies[j] === this.user.hobbies[k]) {
 					count +=1;
 					j ++;
 					k ++;
-				} else if (randHobbies[j] > userHobbies[k]) {
+				} else if (randHobbies[j] > this.user.hobbies[k]) {
 					k ++;
 				} else {
 					j ++;
@@ -115,18 +114,19 @@ class App {
 			// Finds matches courses
 			j = 0;
 			k = 0;
-			while (j < randCourses.length && k < this.user[2].length) {
-				if (randCourses[j] === userCourses[k]) {
+			while (j < randCourses.length && k < this.user.courses.length) {
+				if (randCourses[j] === this.user.courses[k]) {
 					count +=1;
 					j ++;
 					k ++;
-				} else if (randCourses[j] > userCourses[k]) {
+				} else if (randCourses[j] > this.user.courses[k]) {
 					k ++;
 				} else {
 					j ++;
 				}
 			}
 			tempNum.push(count); // adds sorted hobbies with number matches to temp array
+		// }
 		}
 		console.log(tempNum);
 
@@ -139,21 +139,15 @@ class App {
 					let placeHolder = tempNum[i];
 					tempNum[i] = tempNum[j];
 					tempNum[j] = placeHolder;
-					placeHolder = tempPeople[i];
-					tempPeople[i] = tempPeople[j];
-					tempPeople[j] = placeHolder;
+					placeHolder = people[i];
+					people[i] = people[j];
+					people[j] = placeHolder;
 				}
 
 			}
 		}
-		console.log(tempNum);
-		console.log(tempPeople);
-		people = [];
-		for (let i = 0; i< tempPeople.length; i++) {
-			people.push(new Person(tempPeople[i][0], tempPeople[i][1], tempPeople[i][2],tempPeople[i][3], tempPeople[i][4]));		
-		}
-		
-		// tempPeople
+		console.log(tempNum);		
+		console.log(people);
 
 
 	}

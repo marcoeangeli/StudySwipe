@@ -25,7 +25,7 @@ function findPeople () {
 	willGetAllUsers.then(function (all) {
 		this.allUsers = all;
 		
-			for (let i = 0; i < this.allUsers.length-1; i ++) {
+			for (let i = 0; i < this.allUsers.length; i ++) {
 				// Adds everyone but the user to the list
 				people.push(new Person(this.allUsers[i][0], this.allUsers[i][1], this.allUsers[i][2], this.allUsers[i][3], this.allUsers[i][4]));	
 			}
