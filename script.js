@@ -26,7 +26,7 @@ function dragMove(event) {
   let rotateAngle = 0.2*(event.clientX - origin[0]);
   event.currentTarget.style.transform += 'rotate(' + rotateAngle + 'deg)'; //rotates 
   if (event.clientX - origin[0] > 150||event.clientX - origin[0] < -150){
-  	document.querySelector("#swipe").style.backgroundImage = "url('StudySwipeLogo.png')";
+  	// document.querySelector("#swipe").style.background = "url('StudySwipeLogo.png') center center fixed";
   } 
   
   
@@ -51,7 +51,7 @@ function dragEnd(event) {
 			let container = document.querySelector("#swipe");
 			container.innerHTML = "<h1>No more potential buddies! Please check again later :)</h1>";
 			container.style.alignText = "center";
-			document.querySelector("#swipe").style.backgroundImage = "unset";
+			// document.querySelector("#swipe").style.backgroundImage = "unset";
 			//**** Reload from database, reset index
 		} else {
 			event.target.style.transform = '';
@@ -61,7 +61,7 @@ function dragEnd(event) {
 	} else {				
   	  event.target.style.transform = '';
     }
-	  document.querySelector("#swipe").style.backgroundImage = "unset";
+	  // document.querySelector("#swipe").style.backgroundImage = "unset";
   
 }
 
