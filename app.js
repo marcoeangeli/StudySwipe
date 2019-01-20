@@ -24,7 +24,7 @@ class App {
 		document.querySelector("#swipe").classList.remove("inactive");
 		document.querySelector("#signUp").classList.add("inactive");
 
-		people = this.sortPeople();
+		this.sortPeople();
 
 	}
 
@@ -71,9 +71,9 @@ class App {
 	}
 
 	findUser(userId) {
-		for(let i = 0; i <people.length; i ++) {
-			if (userId === people[i].idNum) {
-				return people.splice(i, 1)[0];
+		for(let i = 0; i <database.people.length; i ++) {
+			if (userId === database.people[i].idNum) {
+				return database.people.splice(i, 1)[0];
 			}
 		}
 	}
@@ -84,15 +84,15 @@ class App {
 		let tempNum = [];
 
 		// FInds all courses, changes map into array
-		for (let person in people) {
-			console.log(people[person]);
+		for (let person in database.people) {
+			console.log(database.people[person]);
 
 		// For every person in the base
-		// for (let i = 0; i < people.length; i ++) {
+		// for (let i = 0; i < database.people.length; i ++) {
 
 			let count = 0; //finds number matches
-			let randHobbies = people[person].hobbies; // finds and sorts hobbies/courses
-			let randCourses = people[person].courses;
+			let randHobbies = database.people[person].hobbies; // finds and sorts hobbies/courses
+			let randCourses = database.people[person].courses;
 			randHobbies.sort(); // alphabeticize can also do it numeric
 			randCourses.sort();
 			this.user.hobbies.sort();
@@ -139,15 +139,15 @@ class App {
 					let placeHolder = tempNum[i];
 					tempNum[i] = tempNum[j];
 					tempNum[j] = placeHolder;
-					placeHolder = people[i];
-					people[i] = people[j];
-					people[j] = placeHolder;
+					placeHolder = database.people[i];
+					database.people[i] = database.people[j];
+					database.people[j] = placeHolder;
 				}
 
 			}
 		}
 		console.log(tempNum);		
-		console.log(people);
+		console.log(database.people);
 
 
 	}

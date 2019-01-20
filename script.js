@@ -35,7 +35,7 @@ function dragMove(event) {
 function dragEnd(event) {
 	dragging = false; // end of drag
 	if (event.clientX - origin[0] > 150||event.clientX - origin[0] < -150){
-		index ++;
+		database.index = database.index + 1;
 		// swipe right
 		if (event.clientX - origin[0] > 150){
 			// ***** Change database to mark a match
@@ -47,7 +47,7 @@ function dragEnd(event) {
 		}
 
 		// Changes person
-		if (index > people.length-1) {
+		if (database.index > database.people.length-1) {
 			let container = document.querySelector("#swipe");
 			container.innerHTML = "<h1>No more potential buddies! Please check again later :)</h1>";
 			container.style.alignText = "center";
