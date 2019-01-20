@@ -40,6 +40,9 @@ class App {
 			this.setting.classList.add("inactive");
 		}
 	}
+	chat(userId, otherId) {
+		chat = new Chat(userId, otherId);
+	}
 	clickMess(event) {
 		if (!this.swipe.classList.contains("inactive")) {
 			this.swipe.classList.add("inactive");
@@ -58,18 +61,16 @@ class App {
 			var container = document.querySelector('#message');
 	    	var TEST = '<div class="btn-group">\n';
 	    	for (i = 0; i < matched.length; i++) {
-					TEST = TEST + '<button>' + matched[i] + '</button>' + '\n';
+					TEST = TEST + '<button onClick="chat(\'' + userId + '\', \'' + matched[i] + '\')">' + matched[i] + '</button>' + '\n';
 			}
 			TEST = TEST + "</div>";
+			console.log(TEST)
 			container.innerHTML = TEST;
 	    	});
 		console.log(matched);
-			
-		
 
-
-		
 	}
+	
 	clickSet(event) {
 		if (!this.swipe.classList.contains("inactive")) {
 			this.swipe.classList.add("inactive");
@@ -160,9 +161,5 @@ class App {
 		}
 		console.log(tempNum);		
 		console.log(database.people);
-
-
 	}
-
-
 }
