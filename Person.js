@@ -21,7 +21,7 @@ class Person {
 		
 		let classesContainer = document.createElement("div");
 		classesContainer.classList.add("swipeClasses");
-		classesContainer.textContent = "Courses:";
+		classesContainer.innerHTML = "<strong>Courses:</strong>";
 		console.log(courses);
 		if (courses.length < 2) {
 			classesContainer.textContent +=  courses;	
@@ -41,17 +41,17 @@ class Person {
 		
 		let hobbiesContainer = document.createElement("div");
 		hobbiesContainer.classList.add("swipeClasses");
-		hobbiesContainer.textContent = "Hobbies:";
+		hobbiesContainer.innerHTML = "<strong>Hobbies:</strong>";
 
 		if (hobbies.length < 2) {
-			hobbiesContainer.textContent +=  hobbies;	
+			hobbiesContainer.innerHTML +=  hobbies;	
 		} else {
 			for(let i = 0; i < hobbies.length;i ++) {
 				let tempContainer = document.createElement("div");
 				if (hobbies[i+1] !== undefined) {
-					tempContainer.textContent = hobbies[i] + "   " + hobbies[i+1];
+					tempContainer.innerHTML = hobbies[i] + "   " + hobbies[i+1];
 				} else {
-					tempContainer.textContent = hobbies[i];
+					tempContainer.innerHTML = hobbies[i];
 				}
 				i ++;
 				hobbiesContainer.appendChild(tempContainer);
@@ -60,8 +60,8 @@ class Person {
 
 		let environmentContainer = document.createElement("div");
 		environmentContainer.classList.add("swipeClasses");
-		environmentContainer.textContent = "Environment: " + environment;
-
+		environmentContainer.innerHTML = "<strong>Environment: </strong>" + environment;
+		personContainer.id = "swipeCard";
 		personContainer.appendChild(nameContainer);
 		personContainer.appendChild(classesContainer);
 		personContainer.appendChild(hobbiesContainer);
