@@ -2,6 +2,7 @@ body {
 	display: flex;
 	justify-content: center;
 	margin: 10px;
+	overflow-y: scroll;
 }
 
 .mdl-layout__container {
@@ -25,6 +26,14 @@ div.mdl-layout__header-row.mdl-cell.mdl-cell--12-col.mdl-cell--12-col-tablet.mdl
 
 main.mdl-layout__content.mdl-color--grey-100 {
 	height = 100vh;
+}
+
+.mdl-color--light-blue-600 {
+	background-image: linear-gradient(to right, #c4fffc, #fff7a8);
+}
+
+.mdl-color--light-blue-600 .mdl-card__title-text {
+	color: black;
 }
 
 .btn-group button {
@@ -93,7 +102,8 @@ main.mdl-layout__content.mdl-color--grey-100 {
 #profileName {
   color: white;
   font-family: monospace;
-  font-size: 3em;
+  font-size: 2em;
+  font-weight: bold;
   text-align: center;
   width: 100%;
   min-height: 1.5em;
@@ -101,6 +111,10 @@ main.mdl-layout__content.mdl-color--grey-100 {
   text-shadow: 0px 0px 15px #fbfffba1;
 
 
+}
+
+.quickstart-user-details-container {
+	margin-top: 10px;
 }
 
 .swipeClasses {
@@ -111,7 +125,7 @@ main.mdl-layout__content.mdl-color--grey-100 {
   background-color: #bcffd4;
   text-align: center;
   font-family: monospace;
-  font-size: 1.5em;
+  font-size: 1em;
   border-radius: 10px;
   width: 75%;
   margin-top: 10px;
@@ -147,16 +161,43 @@ main.mdl-layout__content.mdl-color--grey-100 {
 }
 
 @media (max-height: 400px){
+	#title img {
+		display: none;
+	}
 	#banner {
 		height: 60px;
+	}
+	#title {
+		font-size: 2.5em;
+	}
+	#profileName {
+		font-size: : 1.5em;
+	}
+	.swipeClasses {
+		font-size: 0.8em;
+	}
+	.menu {
+		font-size: 1em;	
 	}
 }
 
 @media (max-width: 350px) {
+	#title img {
+		display: none;
+	}
+	#title {
+		font-size: 2.5em;
+	}
+	#banner {
+		height: 60px;
+	}
 	#profileName {
-		font-size: : 2em;
+		font-size: : 1.5em;
 	}
 	.swipeClasses {
-		font-size: 1em;
+		font-size: 0.8em;
+	}
+	.menu {
+		font-size: 1em;	
 	}
 }
