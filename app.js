@@ -40,7 +40,7 @@ class App {
 			this.setting.classList.add("inactive");
 		}
 	}
-	chat(userId, otherId) {
+	startChat(userId, otherId) {
 		chat = new Chat(userId, otherId);
 	}
 	clickMess(event) {
@@ -58,10 +58,10 @@ class App {
 
 			var matched = snapshot.val().matched;
 			var i;
-			var container = document.querySelector('#message');
+			var container = document.querySelector('#convs');
 	    	var TEST = '<div class="btn-group">\n';
 	    	for (i = 0; i < matched.length; i++) {
-					TEST = TEST + '<button onClick="chat(\'' + userId + '\', \'' + matched[i] + '\')">' + matched[i] + '</button>' + '\n';
+					TEST = TEST + '<button onClick="chat = new Chat(\'' + userId + '\', \'' + matched[i] + '\')">' + matched[i] + '</button>' + '\n';
 			}
 			TEST = TEST + "</div>";
 			console.log(TEST)
