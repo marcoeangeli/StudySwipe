@@ -54,15 +54,21 @@ class App {
 			this.setting.classList.add("inactive");
 		}
 		var userId = firebase.auth().currentUser.uid;
+		// console.log(userId);
 
 		return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-
+			console.log(userId);
 			var matched = snapshot.val().matched;
 			var i;
 			var container = document.querySelector('#convs');
 	    	var TEST = '<div class="btn-group">\n';
+
+	    	// window.open("file:///Users/jamiewon/Desktop/Hackathon/YetToBeNamed/Messaging/index.html");
 	    	for (i = 0; i < matched.length; i++) {
-					TEST = TEST + '<button onClick="chat=new Chat(\'' + userId + '\', \'' + matched[i] + '\')">' + database.findPeopleField(matched[i],"moniker") + '</button>' + '\n';
+					// TEST = TEST + '<button onClick="chat=new Chat(\'' + userId + '\', \'' + matched[i] + '\')">' + database.findPeopleField(matched[i],"moniker") + '</button>' + '\n';
+				TEST = TEST + '<button onClick=\"window.open(\'file:///Users/jamiewon/Desktop/Hackathon/YetToBeNamed/Messaging/index.html\')\">'	+ database.findPeopleField(matched[i],"moniker") +' <\/button>' + '\n';
+
+			
 			}
 			TEST = TEST + "</div>";
 			console.log(TEST)
