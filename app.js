@@ -54,6 +54,7 @@ class App {
 			this.setting.classList.add("inactive");
 		}
 		var userId = firebase.auth().currentUser.uid;
+
 		return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
 
 			var matched = snapshot.val().matched;
@@ -61,7 +62,12 @@ class App {
 			var container = document.querySelector('#convs');
 	    	var TEST = '<div class="btn-group">\n';
 	    	for (i = 0; i < matched.length; i++) {
+<<<<<<< HEAD
 					TEST = TEST + '<button onClick="chat = new Chat(\'' + userId + '\', \'' + matched[i] + '\')">' + matched[i] + '</button>' + '\n';
+=======
+	    		console.log(database.findPeopleField(matched[i],"moniker"));
+					TEST = TEST + '<button onClick="chat(\'' + userId + '\', \'' + matched[i] + '\')">' + matched[i] + '</button>' + '\n';
+>>>>>>> ab0c9ab30408d5ffa545b1c1877ec7c28c9a58a8
 			}
 			TEST = TEST + "</div>";
 			console.log(TEST)
