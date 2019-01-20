@@ -38,6 +38,23 @@ function dragEnd(event) {
 		database.index = database.index + 1;
 		// swipe right
 		if (event.clientX - origin[0] > 150){
+			firebase.database().ref('/users/' + app.userId).child('/swipe-right').push(people[database.index-1].idNum);
+			firebase.database().ref('/users/' + people[database.index-1].idNum + '/swipe-right').once('value').then(function(snapshot) {
+               let mutual = false
+               let vals = snapshot.val();
+               for (i in vals) {
+                       if (vals[i] == app.userId) {
+                   		    console.log(snapshot[i]);
+                            mutual = true;
+                       }
+               }
+
+               if (mutual==true) {
+                   firebase.database().ref('/users/' + app.userId ).child('matches').push(people[database.index-1].idNum);
+                   firebase.database().ref('/users/' + people[database.index-1].idNum ).child('matched').push(app.userId);
+               }
+            });
+			
 			// ***** Change database to mark a match
 			// CHeck if thet like you
 			// If yes open conversation

@@ -4,7 +4,7 @@ var database = (function() {
 
 
 
-	var index = 2;
+	var index = 1;
 
 	var willGetAllUsers = new Promise(
 	    function (resolve, reject) {
