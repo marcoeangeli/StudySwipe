@@ -1,5 +1,5 @@
 class SwipeScreen {
-	constructor (container, people) {
+	constructor (container) {
 		this.container = container;
 		this.classList = this.container.classList;
 	}
