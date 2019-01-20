@@ -150,6 +150,11 @@ main.mdl-layout__content.mdl-color--grey-100 {
 	padding: 10px 10px 10px 10px;
 }
 
+#setting {
+	padding-top: 20%;
+	
+}
+
 #title {
 	height: 13%;
 	width: 100%;
