@@ -2,7 +2,7 @@ class App {
 	constructor (userId) {
 		this.userId = userId;
 		this.user = this.findUser(userId);
-		this.swipe = new SwipeScreen(document.querySelector("#swipe"), this.people);
+		this.swipe = new SwipeScreen(document.querySelector("#swipe"), people);
 		this.message = new MessageScreen(document.querySelector("#message"));
 		this.setting = new SettingScreen(document.querySelector("#setting"));
 		
@@ -77,12 +77,13 @@ class App {
 		let tempNum = [];
 
 		// FInds all courses, changes map into array
-		for (person in peopleMap) {
+		for (let person in peopleMap) {
+			console.log(person);
 			tempPeople.push([person.idNum, person.moniker, person.courses, person.hobbies, person.enviroment, person.element])
 		}
 
 		// For every person in the base
-		for (let i = 0; i < peopleMap.size(); i ++) {
+		for (let i = 0; i < peopleMap.size; i ++) {
 
 			let count = 0; //finds number matches
 			let randHobbies = tempPeople[i][3]; // finds and sorts hobbies/courses
@@ -123,14 +124,14 @@ class App {
 		console.log(tempNum);
 
 		// Reorders
-		for (let i = 0; i < temp.length-1; i ++) {
+		for (let i = 0; i < tempNum.length-1; i ++) {
 
-			for (let j = i+1; j < temp.length; j ++) {
+			for (let j = i+1; j < tempNum.length; j ++) {
 
-				if (temp[i] < temp[j]) {
-					let placeHolder = temp[i];
-					temp[i] = temp[j];
-					temp[j] = placeHolder;
+				if (tempNum[i] < tempNum[j]) {
+					let placeHolder = tempNum[i];
+					tempNum[i] = tempNum[j];
+					tempNum[j] = placeHolder;
 					placeHolder = tempPeople[i];
 					tempPeople[i] = tempPeople[j];
 					tempPeople[j] = placeHolder;
@@ -139,6 +140,14 @@ class App {
 			}
 		}
 		console.log(tempNum);
+		console.log(tempPeople);
+		people = [];
+		for (let i = 0; i< tempPeople.length; i++) {
+			people.push(new Person(tempPeople[i][0], tempPeople[i][1], tempPeople[i][2],tempPeople[i][3], tempPeople[i][4]));		
+		}
+		
+		// tempPeople
+
 
 	}
 
