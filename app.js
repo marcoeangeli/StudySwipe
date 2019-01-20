@@ -62,7 +62,7 @@ class App {
 			var container = document.querySelector('#convs');
 	    	var TEST = '<div class="btn-group">\n';
 	    	for (i = 0; i < matched.length; i++) {
-					TEST = TEST + '<button onClick="chat = new Chat(\'' + userId + '\', \'' + matched[i] + '\')">' + database.findPeopleField(matched[i],"moniker") + '</button>' + '\n';
+					TEST = TEST + '<button onClick="chat=new Chat(\'' + userId + '\', \'' + matched[i] + '\')">' + database.findPeopleField(matched[i],"moniker") + '</button>' + '\n';
 			}
 			TEST = TEST + "</div>";
 			console.log(TEST)
@@ -164,3 +164,4 @@ class App {
 		console.log(database.people);
 	}
 }
+
