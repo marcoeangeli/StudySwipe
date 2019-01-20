@@ -93,9 +93,9 @@ main.mdl-layout__content.mdl-color--grey-100 {
 	display: flex;
 	flex-shrink: 0.5;
 	width: 100vw;
-	margin-top: 13%;
 	opacity: 0.5;
 	overflow-y: scroll;
+	padding-top: 20%;
 }
 
 
@@ -144,8 +144,14 @@ main.mdl-layout__content.mdl-color--grey-100 {
     padding-top: 15px;
 }
 
+#swipe h1 {
+	background-color: white;
+	background-image: unset;
+	padding: 10px 10px 10px 10px;
+}
+
 #title {
-	height: 10%;
+	height: 13%;
 	width: 100%;
 	position: fixed;
 	font-size: 3em;
