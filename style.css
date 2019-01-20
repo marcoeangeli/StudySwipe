@@ -93,9 +93,9 @@ main.mdl-layout__content.mdl-color--grey-100 {
 	display: flex;
 	flex-shrink: 0.5;
 	width: 100vw;
-	margin-top: 13%;
 	opacity: 0.5;
 	overflow-y: scroll;
+	padding-top: 20%;
 }
 
 
